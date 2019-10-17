@@ -18,7 +18,7 @@ cat $1 | parallel -j 25 --bar curl -skL --connect-timeout 10 | grep -Eo "(http|h
 wait
 # Test for .git/config files and output to found.txt
 echo "Testing new targets..."
-cat /tmp/targets.tmp | parallel --citation -j 25 --bar check_target | tee found.txt
+cat /tmp/targets.tmp | parallel -j 25 --bar check_target | tee found.txt
 #rm /tmp/targets.tmp
 if [[ $(cat found.txt) == "" ]]; then
 	echo "No results found."
